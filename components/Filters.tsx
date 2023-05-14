@@ -14,13 +14,15 @@ export interface IButtonData {
 export default function Filters() {
   const { useBreakpoint } = Grid;
 
-  const { lg } = useBreakpoint();
+  const { xs, lg } = useBreakpoint();
   const filterContainerStyle: React.CSSProperties = {
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
-    maxWidth: "450px",
+    maxWidth: xs ? "100%" : "450px",
     marginBottom: lg ? "0" : "10px",
+    overflow: xs ? "scroll" : "hidden",
+    padding: 10,
   };
 
   const demoButtons: IButtonData[] = [

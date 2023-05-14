@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { Skeleton } from "antd";
-import { DotChartOutlined } from "@ant-design/icons";
 import * as z from "zod";
 
 const Pie = dynamic(() => import("@ant-design/plots").then(({ Pie }) => Pie), {

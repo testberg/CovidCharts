@@ -1,4 +1,4 @@
-import { Avatar, Card, Col, Skeleton } from "antd";
+import { Avatar, Card, Col, Grid, Skeleton } from "antd";
 import React from "react";
 import ChartCardHeader from "./ChartCardHeader";
 import ColumnsChart from "./ColumnsChart";
@@ -17,6 +17,9 @@ export default function ChartContainer({
   index: number;
   handle: (favTitle: string) => Promise<void>;
 }) {
+  const { useBreakpoint } = Grid;
+  const { xs } = useBreakpoint();
+
   return (
     <Col xs={{ span: 24 }} md={{ span: 12 }} key={chartTitle}>
       <Card
@@ -50,7 +53,7 @@ export default function ChartContainer({
         <div key={"content-div"} style={chartContainerStyle}>
           <div key={"skeleton-div"} style={skeletonWrapperStyle}>
             <Skeleton.Node style={skeletonStyle} active={true}>
-              <DotChartOutlined style={chartIconStyle} />
+              {!xs && <DotChartOutlined style={chartIconStyle} />}
             </Skeleton.Node>
           </div>
           <div key={"chart-div"} style={chartStyle}>
