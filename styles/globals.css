@@ -127,4 +127,5 @@ a {
   gap: 8px;
   align-items: center;
   color: rgba(0, 0, 0, 0.88);
+  min-width: 130px;
 }
