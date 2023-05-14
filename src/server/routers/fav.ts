@@ -2,10 +2,10 @@
  *
  * This is an example router, you can delete this file and then update `../pages/api/trpc/[trpc].tsx`
  */
-import { router, publicProcedure } from '../trpc';
-import { Prisma } from '@prisma/client';
-import { z } from 'zod';
-import { prisma } from '../prisma';
+import { router, publicProcedure } from "../trpc";
+import { Prisma } from "@prisma/client";
+import { z } from "zod";
+import { prisma } from "../prisma";
 
 /**
  * Default selector for Fav.
@@ -18,28 +18,27 @@ const defaultPostSelect = Prisma.validator<Prisma.FavSelect>()({
 });
 
 export const postRouter = router({
-  list: publicProcedure
-    .query(async () => {
-      /**
-       * For pagination docs you can have a look here
-       * @see https://trpc.io/docs/useInfiniteQuery
-       * @see https://www.prisma.io/docs/concepts/components/prisma-client/pagination
-       */
+  list: publicProcedure.query(async () => {
+    /**
+     * For pagination docs you can have a look here
+     * @see https://trpc.io/docs/useInfiniteQuery
+     * @see https://www.prisma.io/docs/concepts/components/prisma-client/pagination
+     */
 
-      const items = await prisma.fav.findMany({
-        select: defaultPostSelect,
-      });
+    const items = await prisma.fav.findMany({
+      select: defaultPostSelect,
+    });
 
-      return {
-        items: items,
-      };
-    }),
+    return {
+      items: items,
+    };
+  }),
   add: publicProcedure
     .input(
       z.object({
         id: z.string().uuid().optional(),
         title: z.string().min(1).max(100),
-      }),
+      })
     )
     .mutation(async ({ input }) => {
       const fav = await prisma.fav.create({
@@ -52,7 +51,7 @@ export const postRouter = router({
     .input(
       z.object({
         title: z.string().min(1).max(100),
-      }),
+      })
     )
     .mutation(async ({ input }) => {
       const fav = await prisma.fav.delete({
