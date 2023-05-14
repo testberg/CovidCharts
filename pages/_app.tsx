@@ -1,10 +1,8 @@
-import type { AppProps } from 'next/app'
-import 'antd/dist/reset.css'
-import '../styles/vars.css'
-import '../styles/global.css'
+import '../public/antd.min.css';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import withTheme from '../theme';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+export default function App({ Component, pageProps }: AppProps) {
+  return withTheme(<Component {...pageProps} />);
 }
-
-export default MyApp
