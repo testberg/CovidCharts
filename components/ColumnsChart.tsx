@@ -23,7 +23,7 @@ interface IApiData {
   newDeaths: number;
 }
 
-const ComponentColumns = () => {
+const ColumnsChart = () => {
   const [chartData, setChartData] = useState<IData[]>([]);
 
   // using css to show chart skeleton instead of loading
@@ -89,4 +89,4 @@ const ComponentColumns = () => {
   };
   return <Column {...config} style={{ background: '#ffffff', zIndex: 1 }} />;
 };
-export default ComponentColumns;
+export default ColumnsChart;

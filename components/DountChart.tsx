@@ -13,7 +13,7 @@ interface IData {
   value: number;
 }
 
-const ComponentDount: React.FC = () => {
+const DountChart: React.FC = () => {
   const [data, setData] = useState<IData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dataSchema = z.object({
@@ -85,4 +85,4 @@ const ComponentDount: React.FC = () => {
   return <Pie {...config} style={{ background: "#ffffff", zIndex: 1 }} />;
 };
 
-export default ComponentDount;
+export default DountChart;
