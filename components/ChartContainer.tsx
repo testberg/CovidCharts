@@ -1,10 +1,9 @@
-import { Avatar, Card, Col, Grid, Skeleton } from "antd";
+import { Avatar, Card, Col, Skeleton } from "antd";
 import React from "react";
 import ChartCardHeader from "./ChartCardHeader";
 import ColumnsChart from "./ColumnsChart";
 import DountChart from "./DountChart";
 import { MdOutlineMessage } from "react-icons/md";
-import { DotChartOutlined } from "@ant-design/icons";
 
 export default function ChartContainer({
   chartTitle,
@@ -17,9 +16,6 @@ export default function ChartContainer({
   index: number;
   handle: (favTitle: string) => Promise<void>;
 }) {
-  const { useBreakpoint } = Grid;
-  const { xs } = useBreakpoint();
-
   return (
     <Col xs={{ span: 24 }} md={{ span: 12 }} key={chartTitle}>
       <Card
@@ -52,9 +48,7 @@ export default function ChartContainer({
       >
         <div key={"content-div"} style={chartContainerStyle}>
           <div key={"skeleton-div"} style={skeletonWrapperStyle}>
-            <Skeleton.Node style={skeletonStyle} active={true}>
-              {!xs && <DotChartOutlined style={chartIconStyle} />}
-            </Skeleton.Node>
+            <Skeleton.Input style={skeletonStyle} active={true} />
           </div>
           <div key={"chart-div"} style={chartStyle}>
             {index === 0 ? <ColumnsChart /> : <DountChart />}
@@ -95,6 +89,7 @@ const skeletonWrapperStyle: React.CSSProperties = {
   width: "100%",
   height: "100%",
   overflow: "hidden",
+  borderRadius: 8,
 };
 
 const chartIconStyle: React.CSSProperties = {

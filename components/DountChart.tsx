@@ -13,7 +13,7 @@ interface IData {
 
 const DountChart: React.FC = () => {
   const [data, setData] = useState<IData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
   const dataSchema = z.object({
     type: z.string(),
     value: z.string(),
@@ -23,7 +23,7 @@ const DountChart: React.FC = () => {
 
   useEffect(() => {
     const helper = async () => {
-      setIsLoading(true);
+      // setIsLoading(true);
       try {
         const response = await fetch(
           `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;date>=2023-04-01;date<2023-05-01;areaName=england&structure={"type":"date","value":"newCasesByPublishDate"}`
@@ -40,7 +40,7 @@ const DountChart: React.FC = () => {
       } catch (e) {
         setData([]);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
     helper();
