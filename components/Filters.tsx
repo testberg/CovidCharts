@@ -21,7 +21,7 @@ export default function Filters() {
     justifyContent: "space-between",
     maxWidth: xs ? "100%" : "450px",
     marginBottom: lg ? "0" : "10px",
-    overflow: xs ? "scroll" : "hidden",
+    overflowX: xs ? "scroll" : "hidden",
     padding: 10,
   };
 
